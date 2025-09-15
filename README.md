@@ -93,7 +93,7 @@ PORT=3001
 NODE_ENV=development
 CORS_ORIGIN=http://localhost:5173
 
-# Add at least one API key
+# Add API keys (recommended to have all three,but at least one is required)
 GEMINI_API_KEY=your_gemini_key_here
 GROQ_API_KEY=your_groq_key_here
 HUGGINGFACE_API_KEY=your_hf_key_here
