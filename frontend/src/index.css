@@ -1,68 +1,138 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+@layer base {
+  html {
+    font-family: 'Inter', 'system-ui', sans-serif;
   }
-  a:hover {
-    color: #747bff;
+
+  * {
+    border-color: theme('colors.gray.200');
   }
-  button {
-    background-color: #f9f9f9;
+
+  html.dark * {
+    border-color: theme('colors.gray.800');
   }
+}
+
+@layer components {
+  /* Custom button styles */
+  .btn {
+    @apply px-4 py-2 rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+  
+  .btn-primary {
+    @apply bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500;
+  }
+  
+  .btn-secondary {
+    @apply bg-gray-200 text-gray-900 hover:bg-gray-300 focus:ring-gray-500 dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-gray-600;
+  }
+  
+  .btn-outline {
+    @apply border border-gray-300 text-gray-700 hover:bg-gray-50 focus:ring-gray-500 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-800;
+  }
+  
+  /* Card styles */
+  .card {
+    @apply bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm;
+  }
+  
+  /* Input styles */
+  .input {
+    @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:text-white;
+  }
+  
+  /* Animation utilities */
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+}
+
+@layer utilities {
+  /* Gradient text */
+  .text-gradient {
+    background: linear-gradient(90deg, #2563eb, #9333ea);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Custom scrollbars */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: #9ca3af #f3f4f6;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: #f3f4f6;
+    border-radius: 3px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: #9ca3af;
+    border-radius: 3px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background: #6b7280;
+  }
+
+  /* Dark mode scrollbars */
+  .dark .scrollbar-thin {
+    scrollbar-color: #4b5563 #1f2937;
+  }
+
+  .dark .scrollbar-thin::-webkit-scrollbar-track {
+    background: #1f2937;
+  }
+
+  .dark .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: #4b5563;
+  }
+
+  .dark .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background: #6b7280;
+  }
+}
+
+/* Loading spinner */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* Toast customization */
+.react-hot-toast {
+  font-family: 'Inter', 'system-ui', sans-serif;
+}
+
+/* File drop zone hover effects */
+.dropzone-active {
+  @apply ring-2 ring-blue-500 ring-opacity-50 bg-blue-50 dark:bg-blue-950;
+}
+
+/* Monaco Editor dark theme support */
+.monaco-editor .margin,
+.monaco-editor .monaco-editor-background,
+.monaco-editor-background {
+  background-color: #111827 !important;
+}
+
+.monaco-editor .monaco-scrollable-element > .scrollbar > .slider {
+  background: #4b5563 !important;
 }

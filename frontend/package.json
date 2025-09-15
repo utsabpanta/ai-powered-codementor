@@ -1,5 +1,5 @@
 {
-  "name": "frontend",
+  "name": "@ai-powered-codementor/frontend",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,20 +10,42 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ai-powered-codementor/shared": "workspace:*",
+    "@monaco-editor/react": "^4.7.0",
+    "@radix-ui/react-dialog": "^1.1.15",
+    "@radix-ui/react-progress": "^1.1.7",
+    "@radix-ui/react-select": "^2.2.6",
+    "@radix-ui/react-tabs": "^1.1.13",
+    "@radix-ui/react-tooltip": "^1.2.8",
+    "axios": "^1.11.0",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.542.0",
+    "monaco-editor": "^0.52.2",
     "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "react-dom": "^19.1.1",
+    "react-dropzone": "^14.3.8",
+    "react-hot-toast": "^2.6.0",
+    "react-router-dom": "^7.8.2",
+    "recharts": "^3.1.2",
+    "tailwind-merge": "^3.3.1",
+    "tailwindcss": "^3.4.17",
+    "zustand": "^5.0.8"
   },
   "devDependencies": {
     "@eslint/js": "^9.33.0",
-    "@types/react": "^19.1.10",
-    "@types/react-dom": "^19.1.7",
-    "@vitejs/plugin-react": "^5.0.0",
-    "eslint": "^9.33.0",
+    "@types/react": "^19.1.12",
+    "@types/react-dom": "^19.1.9",
+    "@typescript-eslint/eslint-plugin": "^8.42.0",
+    "@typescript-eslint/parser": "^8.42.0",
+    "@vitejs/plugin-react": "^5.0.2",
+    "autoprefixer": "^10.4.21",
+    "eslint": "^9.35.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
     "globals": "^16.3.0",
+    "postcss": "^8.5.6",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.39.1",
-    "vite": "^7.1.2"
+    "vite": "^7.1.4"
   }
 }
