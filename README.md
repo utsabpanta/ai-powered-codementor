@@ -140,19 +140,6 @@ pnpm clean            # Remove build artifacts
 | `/api/report` | POST | 📊 Generate comprehensive reports |
 | `/api/providers` | GET | 🤖 Check AI provider status |
 
-## 🚀 Production Deployment
-
-```bash
-# Build for production
-pnpm build
-
-# Set environment variables
-export NODE_ENV=production
-export CORS_ORIGIN=https://yourdomain.com
-
-# Start production server
-cd backend && pnpm start
-```
 
 ## 🔒 Security & Best Practices
 

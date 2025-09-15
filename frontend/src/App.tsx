@@ -39,7 +39,7 @@ function App() {
             
             <div className="flex items-center space-x-3">
               <button
-                onClick={() => window.open('https://github.com/yourusername/ai-powered-codementor', '_blank')}
+                onClick={() => window.open('https://github.com/utsabpanta/ai-powered-codementor', '_blank')}
                 className="flex items-center space-x-2 px-3 py-2 text-sm text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
               >
                 <Github className="w-4 h-4" />
