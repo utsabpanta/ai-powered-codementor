@@ -71,7 +71,7 @@ model: 'llama-3.3-70b-versatile'
 model: 'bigcode/starcoder2-15b'
 ```
 
-## 🔑 Get API Keys
+## 🔑 Get API Keys (free usage)
 
 ### Google Gemini
 1. Go to [Google AI Studio](https://makersuite.google.com/app/apikey)

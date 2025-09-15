@@ -123,9 +123,6 @@ importers:
 
   frontend:
     dependencies:
-      '@ai-powered-codementor/shared':
-        specifier: workspace:*
-        version: link:../shared
       '@monaco-editor/react':
         specifier: ^4.7.0
         version: 4.7.0(monaco-editor@0.52.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
@@ -230,40 +227,6 @@ importers:
         specifier: ^7.1.4
         version: 7.1.4(@types/node@24.3.1)(jiti@2.5.1)(lightningcss@1.30.1)(yaml@2.8.1)
 
-  infrastructure:
-    dependencies:
-      aws-cdk-lib:
-        specifier: ^2.214.0
-        version: 2.214.0(constructs@10.4.2)
-      constructs:
-        specifier: ^10.4.2
-        version: 10.4.2
-    devDependencies:
-      '@types/node':
-        specifier: ^24.3.1
-        version: 24.3.1
-      aws-cdk:
-        specifier: ^2.1029.0
-        version: 2.1029.0
-      typescript:
-        specifier: ~5.8.3
-        version: 5.8.3
-
-  shared:
-    devDependencies:
-      '@typescript-eslint/eslint-plugin':
-        specifier: ^8.42.0
-        version: 8.42.0(@typescript-eslint/parser@8.42.0(eslint@9.35.0(jiti@2.5.1))(typescript@5.8.3))(eslint@9.35.0(jiti@2.5.1))(typescript@5.8.3)
-      '@typescript-eslint/parser':
-        specifier: ^8.42.0
-        version: 8.42.0(eslint@9.35.0(jiti@2.5.1))(typescript@5.8.3)
-      eslint:
-        specifier: ^9.35.0
-        version: 9.35.0(jiti@2.5.1)
-      typescript:
-        specifier: ~5.8.3
-        version: 5.8.3
-
 packages:
 
   '@alloc/quick-lru@5.2.0':
@@ -273,19 +236,6 @@ packages:
   '@anthropic-ai/sdk@0.61.0':
     resolution: {integrity: sha512-GnlOXrPxow0uoaVB3DGNh9EJBU1MyagCBCLpU+bwDVlj/oOPYIwoiasMWlykkfYcQOrDP2x/zHnRD0xN7PeZPw==}
     hasBin: true
-
-  '@aws-cdk/asset-awscli-v1@2.2.242':
-    resolution: {integrity: sha512-4c1bAy2ISzcdKXYS1k4HYZsNrgiwbiDzj36ybwFVxEWZXVAP0dimQTCaB9fxu7sWzEjw3d+eaw6Fon+QTfTIpQ==}
-
-  '@aws-cdk/asset-node-proxy-agent-v6@2.1.0':
-    resolution: {integrity: sha512-7bY3J8GCVxLupn/kNmpPc5VJz8grx+4RKfnnJiO1LG+uxkZfANZG3RMHhE+qQxxwkyQ9/MfPtTpf748UhR425A==}
-
-  '@aws-cdk/cloud-assembly-schema@48.8.0':
-    resolution: {integrity: sha512-PYA6oUpb/7IzCvhOQn3CBJoeDa7iZZkvrN+2hZEK5L1Wc40oInNIt4sz8LlYS/WvqdTDdZC5j53yfle6uutjEw==}
-    engines: {node: '>= 18.0.0'}
-    bundledDependencies:
-      - jsonschema
-      - semver
 
   '@babel/code-frame@7.27.1':
     resolution: {integrity: sha512-cjQ7ZlQ0Mv3b47hABuTevyTuYN4i+loJKGeV9flcCgIK37cCXRh+L1bd3iBHlynerhQ7BhCkn2BPbQUL+rGqFg==}
@@ -1777,29 +1727,6 @@ packages:
     peerDependencies:
       postcss: ^8.1.0
 
-  aws-cdk-lib@2.214.0:
-    resolution: {integrity: sha512-Mj9GSJkkXj8wjiy2pKARquOsiiHsu7tK1WDfdA8Db39hIznWWP+/KscI2iqnntDMeEmcj1QX25PbYT+6rq8zkw==}
-    engines: {node: '>= 18.0.0'}
-    peerDependencies:
-      constructs: ^10.0.0
-    bundledDependencies:
-      - '@balena/dockerignore'
-      - case
-      - fs-extra
-      - ignore
-      - jsonschema
-      - minimatch
-      - punycode
-      - semver
-      - table
-      - yaml
-      - mime-types
-
-  aws-cdk@2.1029.0:
-    resolution: {integrity: sha512-TYJGMs1QVYgOTqt0MnbykZvKXMThevjg/m16MuERlWK3fQErhKcUkMmJ8uUY0SBf70FvT7tQdBq9dnsa34TM2A==}
-    engines: {node: '>= 18.0.0'}
-    hasBin: true
-
   axios@1.11.0:
     resolution: {integrity: sha512-1Lx3WLFQWm3ooKDYZD1eXmoGO9fxYQjrycfHFC8P0sCfQVXyROp0p9PFWBehewBOdCwHc+f/b8I0fMto5eSfwA==}
 
@@ -1994,9 +1921,6 @@ packages:
     resolution: {integrity: sha512-fsfrO0MxV64Znoy8/l1vVIjjHa29SZyyqPgQBwhiDcaW8wJc2W3XWVOGx4M3oJBnv/zdUZIIp1gDeS98GzP8Ng==}
     engines: {node: '>=18'}
     hasBin: true
-
-  constructs@10.4.2:
-    resolution: {integrity: sha512-wsNxBlAott2qg8Zv87q3eYZYgheb9lchtBfjHzzLHtXbttwSrHPs1NNQbBrmbb1YZvYg2+Vh0Dor76w4mFxJkA==}
 
   content-disposition@1.0.0:
     resolution: {integrity: sha512-Au9nRL8VNUut/XSzbQA38+M78dzP4D+eqg3gfJHMIHHYa3bg067xj1KxMUWj+VULbiZMowKngFFbKczUrNJ1mg==}
@@ -2426,11 +2350,6 @@ packages:
 
   fs.realpath@1.0.0:
     resolution: {integrity: sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==}
-
-  fsevents@2.3.2:
-    resolution: {integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==}
-    engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
-    os: [darwin]
 
   fsevents@2.3.3:
     resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}
@@ -4073,12 +3992,6 @@ snapshots:
 
   '@anthropic-ai/sdk@0.61.0': {}
 
-  '@aws-cdk/asset-awscli-v1@2.2.242': {}
-
-  '@aws-cdk/asset-node-proxy-agent-v6@2.1.0': {}
-
-  '@aws-cdk/cloud-assembly-schema@48.8.0': {}
-
   '@babel/code-frame@7.27.1':
     dependencies:
       '@babel/helper-validator-identifier': 7.27.1
@@ -5596,17 +5509,6 @@ snapshots:
       postcss: 8.5.6
       postcss-value-parser: 4.2.0
 
-  aws-cdk-lib@2.214.0(constructs@10.4.2):
-    dependencies:
-      '@aws-cdk/asset-awscli-v1': 2.2.242
-      '@aws-cdk/asset-node-proxy-agent-v6': 2.1.0
-      '@aws-cdk/cloud-assembly-schema': 48.8.0
-      constructs: 10.4.2
-
-  aws-cdk@2.1029.0:
-    optionalDependencies:
-      fsevents: 2.3.2
-
   axios@1.11.0:
     dependencies:
       follow-redirects: 1.15.11
@@ -5850,8 +5752,6 @@ snapshots:
       supports-color: 8.1.1
       tree-kill: 1.2.2
       yargs: 17.7.2
-
-  constructs@10.4.2: {}
 
   content-disposition@1.0.0:
     dependencies:
@@ -6293,9 +6193,6 @@ snapshots:
       universalify: 2.0.1
 
   fs.realpath@1.0.0: {}
-
-  fsevents@2.3.2:
-    optional: true
 
   fsevents@2.3.3:
     optional: true
