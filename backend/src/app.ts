@@ -1,4 +1,4 @@
-import express, { Application, Request, Response } from 'express';
+import express, { Application, Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import config from './config/config';
@@ -42,7 +42,7 @@ app.use((req: Request, res: Response) => {
 });
 
 // Global error handler
-app.use((error: Error, req: Request, res: Response, next: any) => {
+app.use((error: Error, _req: Request, res: Response, _next: NextFunction) => {
   console.error('Global error handler:', error);
   res.status(500).json({
     error: 'Internal Server Error',

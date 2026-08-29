@@ -1,10 +1,11 @@
 import axios from 'axios';
 import type { AxiosResponse } from 'axios';
+import type { ProjectInfo } from '../types/analysis';
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 console.log('API Base URL:', API_BASE_URL);
 
-interface APIResponse<T = any> {
+interface APIResponse<T = unknown> {
   success: boolean;
   data?: T;
   error?: string;
@@ -64,17 +65,13 @@ export interface ImprovementRequest {
 }
 
 export interface ReportRequest {
-  analysisResults: any[];
-  projectInfo?: {
-    name?: string;
-    language?: string;
-    framework?: string;
-    description?: string;
-  };
+  analysisResults: AnalysisResponse[];
+  projectInfo?: ProjectInfo;
 }
 
 export interface AnalysisResponse {
   analysis: string;
+  provider: string;
   metadata: {
     language: string;
     analysisType: string;
@@ -102,7 +99,7 @@ export interface ImprovementResponse {
 export interface ReportResponse {
   report: string;
   metadata: {
-    projectInfo: any;
+    projectInfo: ProjectInfo;
     generatedAt: string;
     resultsCount: number;
   };

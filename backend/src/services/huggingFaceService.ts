@@ -1,4 +1,3 @@
-import config from '../config/config';
 
 interface HuggingFaceConfig {
   apiKey?: string;
@@ -45,7 +44,7 @@ class HuggingFaceService {
         throw new Error(`Hugging Face API error: ${response.statusText}`);
       }
 
-      const result = await response.json() as any;
+      const result = (await response.json()) as Array<{ generated_text?: string }>;
       return result[0]?.generated_text || 'Unable to analyze code with Hugging Face API';
 
     } catch (error) {

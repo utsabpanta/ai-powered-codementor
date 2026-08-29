@@ -1,6 +1,8 @@
 import React from 'react';
 import { AlertTriangle, Clock, FileText, TrendingUp, Code } from 'lucide-react';
 import { AnalysisDisplay } from './AnalysisDisplay';
+import type { Issue } from '../types/analysis';
+import type { AnalysisResponse } from '../services/apiService';
 
 interface AnalysisResult {
   id: string;
@@ -12,7 +14,7 @@ interface AnalysisResult {
     overallScore: number;
     recommendations: string[];
   };
-  issues: any[];
+  issues: Issue[];
   metrics: {
     complexity: {
       cyclomatic: number;
@@ -33,7 +35,7 @@ interface AnalysisResult {
     };
   };
   processing_time: number;
-  rawResults?: any[];
+  rawResults?: AnalysisResponse[];
 }
 
 interface AnalysisResultsProps {

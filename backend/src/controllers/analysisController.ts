@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import aiService from '../services/aiService';
 import { AnalysisRequest } from '../types/analysis';
-import { sendSuccess, sendError, sendValidationError, sendServerError } from '../utils/responseUtils';
+import { sendSuccess, sendValidationError, sendServerError } from '../utils/responseUtils';
 import { validateCode, validateLanguage, validateAnalysisType, validateProviderType } from '../utils/validation';
 
 export const analyzeCode = async (req: Request, res: Response): Promise<Response> => {
