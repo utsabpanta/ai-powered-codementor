@@ -1,7 +1,7 @@
 {
   "name": "ai-powered-codementor",
   "version": "1.0.0",
-  "description": "🚀 Intelligent Code Analysis & Mentoring Platform powered by Multi-AI Providers (Gemini, Groq, HuggingFace) - Get instant code reviews, security analysis, performance insights, and improvement suggestions with automatic fallback for maximum reliability",
+  "description": "\ud83d\ude80 Intelligent Code Analysis & Mentoring Platform powered by Multi-AI Providers (Gemini, Groq, HuggingFace) - Get instant code reviews, security analysis, performance insights, and improvement suggestions with automatic fallback for maximum reliability",
   "main": "index.js",
   "scripts": {
     "dev": "concurrently \"pnpm --filter @ai-powered-codementor/frontend dev\" \"pnpm --filter @ai-powered-codementor/backend dev:watch\"",
@@ -42,8 +42,13 @@
   "license": "MIT",
   "packageManager": "pnpm@10.15.1",
   "devDependencies": {
-    "@types/node": "^24.3.1",
-    "concurrently": "^9.2.1",
+    "@types/node": "^24.13.3",
+    "concurrently": "^9.2.4",
     "typescript": "~5.8.3"
+  },
+  "pnpm": {
+    "overrides": {
+      "yaml": ">=2.8.3"
+    }
   }
 }
