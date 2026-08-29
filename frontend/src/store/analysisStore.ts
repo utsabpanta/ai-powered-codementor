@@ -1,8 +1,9 @@
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
+import type { Issue } from '../types/analysis';
 
 // Temporary interfaces until shared package is working
-interface CodeFile {
+export interface CodeFile {
   id: string;
   path: string;
   content: string;
@@ -10,21 +11,6 @@ interface CodeFile {
   size: number;
   lastModified?: number;
   file?: File; // Reference to original File object
-}
-
-interface AnalysisIssue {
-  id: string;
-  severity: 'critical' | 'high' | 'medium' | 'low' | 'info';
-  category: 'security' | 'performance' | 'maintainability' | 'bugs' | 'style' | 'architecture';
-  title: string;
-  description: string;
-  explanation?: string;
-  file: string;
-  line?: number;
-  column?: number;
-  codeSnippet?: string;
-  suggestion?: string;
-  references?: string[];
 }
 
 interface QualityMetrics {
@@ -57,7 +43,7 @@ interface AnalysisResult {
     overallScore: number; // 0-100
     recommendations: string[];
   };
-  issues: AnalysisIssue[];
+  issues: Issue[];
   metrics: QualityMetrics;
   processing_time: number;
 }

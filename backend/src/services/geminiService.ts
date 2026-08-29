@@ -1,18 +1,7 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
+import type { GenerativeModel } from '@google/generative-ai';
 import config from '../config/config';
 
-interface AnalysisResult {
-  quality_score: number;
-  issues: Array<{
-    type: 'bug' | 'performance' | 'security' | 'style';
-    severity: 'low' | 'medium' | 'high';
-    description: string;
-    line?: number;
-    suggestion: string;
-  }>;
-  summary: string;
-  recommendations: string[];
-}
 
 interface ProjectInfo {
   name?: string;
@@ -23,7 +12,7 @@ interface ProjectInfo {
 
 class GeminiService {
   private genAI: GoogleGenerativeAI;
-  private model: any;
+  private model: GenerativeModel;
 
   constructor() {
     if (!config.gemini.apiKey) {
@@ -47,7 +36,7 @@ class GeminiService {
     try {
       const prompt = this.buildAnalysisPrompt(code, language, analysisType);
       const result = await this.retryWithBackoff(() => this.model.generateContent(prompt));
-      const response = await (result as any).response;
+      const response = result.response;
       return response.text();
     } catch (error) {
       console.error('Error analyzing code with Gemini:', error);
@@ -153,7 +142,7 @@ ${code}
 \`\`\``;
   }
 
-  async generateReport(analysisResults: AnalysisResult[], projectInfo: ProjectInfo = {}): Promise<string> {
+  async generateReport(analysisResults: unknown[], projectInfo: ProjectInfo = {}): Promise<string> {
     try {
       const prompt = `Generate a comprehensive code analysis report based on the following analysis results:
 
@@ -177,7 +166,7 @@ Please create a detailed report in markdown format that includes:
 Make the report professional and actionable for developers.`;
 
       const result = await this.model.generateContent(prompt);
-      const response = await (result as any).response;
+      const response = result.response;
       return response.text();
     } catch (error) {
       console.error('Error generating report with Gemini:', error);
@@ -204,7 +193,7 @@ ${code}
 Please provide a clear, educational explanation suitable for developers learning this code.`;
 
       const result = await this.model.generateContent(prompt);
-      const response = await (result as any).response;
+      const response = result.response;
       return response.text();
     } catch (error) {
       console.error('Error explaining code with Gemini:', error);
@@ -238,7 +227,7 @@ ${code}
 \`\`\``;
 
       const result = await this.model.generateContent(prompt);
-      const response = await (result as any).response;
+      const response = result.response;
       return response.text();
     } catch (error) {
       console.error('Error suggesting improvements with Gemini:', error);

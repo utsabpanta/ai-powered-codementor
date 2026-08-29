@@ -1,8 +1,11 @@
 import { apiService } from '../services/apiService';
+import type { AnalysisResponse } from '../services/apiService';
+import type { CodeFile } from '../store/analysisStore';
+import type { Issue, ParsedAnalysis } from '../types/analysis';
 
 // Types for analysis processing
 export interface ProcessedAnalysisResult {
-  parsedAnalysis: any;
+  parsedAnalysis: ParsedAnalysis | null;
 }
 
 export interface AnalysisMetrics {
@@ -17,7 +20,7 @@ export interface AnalysisResult {
   id: string;
   timestamp: string;
   summary: AnalysisMetrics;
-  issues: any[];
+  issues: Issue[];
   metrics: {
     complexity: {
       cyclomatic: number;
@@ -38,13 +41,15 @@ export interface AnalysisResult {
     };
   };
   processing_time: number;
-  rawResults: any[];
+  rawResults: AnalysisResponse[];
 }
 
 /**
  * Extracts JSON data from analysis text response
  */
-export const extractJSONFromAnalysis = (analysisText: string) => {
+export const extractJSONFromAnalysis = (
+  analysisText: string
+): ParsedAnalysis | null => {
   try {
     return JSON.parse(analysisText);
   } catch {
@@ -66,8 +71,8 @@ export const extractJSONFromAnalysis = (analysisText: string) => {
  * Processes multiple analysis results and calculates aggregated metrics
  */
 export const processAnalysisResults = async (
-  analysisResults: any[],
-  files: any[]
+  analysisResults: AnalysisResponse[],
+  files: CodeFile[]
 ): Promise<AnalysisResult> => {
   // Parse all analysis results
   const parsedResults = analysisResults.map(result => ({
@@ -76,7 +81,7 @@ export const processAnalysisResults = async (
   }));
 
   // Aggregate data from all analysis results
-  const allIssues: any[] = [];
+  const allIssues: Issue[] = [];
   const allRecommendations: string[] = [];
   let totalQualityScore = 0;
   let validQualityScores = 0;
@@ -117,7 +122,7 @@ export const processAnalysisResults = async (
       try {
         const content = await apiService.readFileContent(fileObj.file);
         totalLines += content.split('\n').length;
-      } catch (error) {
+      } catch {
         console.warn('Could not read file for line count:', fileObj.path);
       }
     }

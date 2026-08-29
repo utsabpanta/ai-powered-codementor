@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import type { Issue, ParsedAnalysis } from '../types/analysis';
 import { Check, AlertTriangle, Info, Zap, Shield, Code2, TrendingUp, Copy, ChevronDown, ChevronRight, Eye, EyeOff, FileText, Target, Users } from 'lucide-react';
 
 // Type definitions for better type safety
@@ -13,25 +14,6 @@ interface CodeBlockProps {
   language: string;
   code: string;
   title?: string;
-}
-
-interface Issue {
-  type?: string;
-  severity?: string;
-  description?: string;
-  message?: string;
-  line?: number;
-  codeSnippet?: string;
-  suggestion?: string;
-  references?: string[];
-}
-
-interface ParsedAnalysis {
-  quality_score?: number;
-  summary?: string;
-  issues?: Issue[];
-  recommendations?: string[];
-  [key: string]: any;
 }
 
 interface SeverityConfig {
@@ -451,7 +433,7 @@ export const AnalysisDisplay: React.FC<AnalysisDisplayProps> = ({ analysis, prov
                         </h4>
                       </div>
                       <div className="space-y-3">
-                        {issues.map((issue: any, index: number) => (
+                        {issues.map((issue: Issue, index: number) => (
                           <IssueCard key={`${type}-${index}`} issue={issue} index={index} />
                         ))}
                       </div>

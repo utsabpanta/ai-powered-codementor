@@ -120,7 +120,7 @@ class AIService {
     };
   }
 
-  async generateReport(analysisResults: any[], projectInfo?: ProjectInfo): Promise<ProcessedAnalysisResult> {
+  async generateReport(analysisResults: unknown[], projectInfo?: ProjectInfo): Promise<ProcessedAnalysisResult> {
     const { result: report, provider } = await this.executeWithFallback(
       async (provider) => {
         // Check if provider supports report generation

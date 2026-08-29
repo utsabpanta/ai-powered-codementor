@@ -36,7 +36,7 @@ export interface AIProvider {
    * Generate comprehensive report from analysis results
    */
   generateReport?(
-    analysisResults: any[],
+    analysisResults: unknown[],
     projectInfo?: ProjectInfo
   ): Promise<string>;
 }

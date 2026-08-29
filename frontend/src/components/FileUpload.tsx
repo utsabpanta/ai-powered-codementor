@@ -48,25 +48,24 @@ const LANGUAGE_MAP: Record<string, string> = {
   '.sh': 'bash'
 };
 
+const getFileExtension = (filename: string): string => {
+  return filename.toLowerCase().substring(filename.lastIndexOf('.'));
+};
+
+const isCodeFile = (file: File): boolean => {
+  const extension = getFileExtension(file.name);
+  return (SUPPORTED_EXTENSIONS as readonly string[]).includes(extension);
+};
+
+const getLanguageFromExtension = (filename: string): string => {
+  const ext = getFileExtension(filename);
+  return LANGUAGE_MAP[ext] || 'text';
+};
+
 export const FileUpload: React.FC<FileUploadProps> = ({ onFilesSelected }) => {
   const { files, setFiles, isAnalyzing, startAnalysis, completeAnalysis, failAnalysis } = useAnalysisStore();
   const [selectedModel, setSelectedModel] = useState<ModelType>('auto');
   const [analysisType, setAnalysisType] = useState<AnalysisType>('general');
-
-  // Utility functions
-  const getFileExtension = (filename: string): string => {
-    return filename.toLowerCase().substring(filename.lastIndexOf('.'));
-  };
-
-  const isCodeFile = (file: File): boolean => {
-    const extension = getFileExtension(file.name);
-    return SUPPORTED_EXTENSIONS.includes(extension as any);
-  };
-
-  const getLanguageFromExtension = (filename: string): string => {
-    const ext = getFileExtension(filename);
-    return LANGUAGE_MAP[ext] || 'text';
-  };
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
     const codeFiles = acceptedFiles.filter(isCodeFile);
@@ -251,7 +250,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({ onFilesSelected }) => {
                 <div className="relative">
                   <select
                     value={selectedModel}
-                    onChange={(e) => setSelectedModel(e.target.value as any)}
+                    onChange={(e) => setSelectedModel(e.target.value as ModelType)}
                     className="w-full px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none"
                   >
                     <option value="auto">Auto (Fallback)</option>
@@ -271,7 +270,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({ onFilesSelected }) => {
                 <div className="relative">
                   <select
                     value={analysisType}
-                    onChange={(e) => setAnalysisType(e.target.value as any)}
+                    onChange={(e) => setAnalysisType(e.target.value as AnalysisType)}
                     className="w-full px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none"
                   >
                     <option value="general">General Analysis</option>

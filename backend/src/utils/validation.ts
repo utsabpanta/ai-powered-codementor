@@ -4,7 +4,7 @@ import { AnalysisType, ProviderType } from '../types/analysis';
  * Validation utilities for request data
  */
 
-export const validateCode = (code: any): string | null => {
+export const validateCode = (code: unknown): string | null => {
   if (!code || typeof code !== 'string' || code.trim().length === 0) {
     return 'Code is required and must be a non-empty string';
   }
@@ -16,7 +16,7 @@ export const validateCode = (code: any): string | null => {
   return null;
 };
 
-export const validateLanguage = (language: any): string => {
+export const validateLanguage = (language: unknown): string => {
   if (!language || typeof language !== 'string') {
     return 'javascript'; // Default language
   }
@@ -32,17 +32,21 @@ export const validateLanguage = (language: any): string => {
     : 'javascript';
 };
 
-export const validateAnalysisType = (analysisType: any): AnalysisType => {
+export const validateAnalysisType = (analysisType: unknown): AnalysisType => {
   const validTypes: AnalysisType[] = ['general', 'security', 'performance', 'maintainability'];
-  return validTypes.includes(analysisType) ? analysisType : 'general';
+  return validTypes.includes(analysisType as AnalysisType)
+    ? (analysisType as AnalysisType)
+    : 'general';
 };
 
-export const validateProviderType = (provider: any): ProviderType => {
+export const validateProviderType = (provider: unknown): ProviderType => {
   const validProviders: ProviderType[] = ['gemini', 'groq', 'huggingface', 'auto'];
-  return validProviders.includes(provider) ? provider : 'auto';
+  return validProviders.includes(provider as ProviderType)
+    ? (provider as ProviderType)
+    : 'auto';
 };
 
-export const validateAnalysisResults = (results: any): string | null => {
+export const validateAnalysisResults = (results: unknown): string | null => {
   if (!results || !Array.isArray(results)) {
     return 'Analysis results must be provided as an array';
   }

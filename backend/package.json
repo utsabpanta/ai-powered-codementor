@@ -9,6 +9,7 @@
     "dev": "ts-node src/server.ts",
     "dev:watch": "nodemon --exec ts-node src/server.ts",
     "clean": "rm -rf dist",
+    "lint": "eslint src",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -34,6 +35,7 @@
     "winston": "^3.19.0"
   },
   "devDependencies": {
+    "@eslint/js": "^9.39.5",
     "@types/archiver": "^6.0.4",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
@@ -50,6 +52,7 @@
     "nodemon": "^3.1.14",
     "ts-jest": "^29.4.12",
     "ts-node": "^10.9.2",
-    "typescript": "~5.8.3"
+    "typescript": "~5.8.3",
+    "typescript-eslint": "^8.68.0"
   }
 }
